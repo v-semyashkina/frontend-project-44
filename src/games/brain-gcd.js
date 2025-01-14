@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { generateNumber, greeting, getUserAnswer } from '../index.js';
 
 const getDivisor = (dividend, checkDivisor) => {
