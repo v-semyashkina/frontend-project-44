@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+// eslint-disable-next-line import/extensions
 import { generateNumber, greeting, getUserAnswer } from '../index.js';
 
 const checkPrime = (num) => {

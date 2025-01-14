@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 /* eslint-disable no-console */
 import { generateNumber, greeting, getUserAnswer } from '../index.js';
 
