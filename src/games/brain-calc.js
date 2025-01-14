@@ -28,7 +28,7 @@ const gameQuestions = (name) => {
     isCorrect = getUserAnswer(problem, solution, name);
     tries += 1;
   }
-  if (tries === 3) {
+  if (tries === 3 && isCorrect) {
     console.log(`Congratulations, ${name}!`);
   }
 };
