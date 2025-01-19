@@ -1,13 +1,12 @@
-/* eslint-disable no-console */
 import { question } from 'readline-sync';
 
-const generateNumber = (top) => Math.floor(Math.random() * top);
+let userName;
+let isCorrect = true;
 
 const greeting = () => {
   console.log('Welcome to the Brain Games!');
-  const name = question('May I have your name? ');
-  console.log(`Hello, ${name}!`);
-  return name;
+  userName = question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
 };
 
 const getUserAnswer = (problem, rightAnswer, name) => {
@@ -19,9 +18,20 @@ const getUserAnswer = (problem, rightAnswer, name) => {
     console.log(
       `'${userGuess}' is wrong answer ;(. Correct answer was '${rightAnswer}'. \nLet's try again, ${name}!`,
     );
-    return false;
+    isCorrect = false;
   }
-  return true;
 };
 
-export { generateNumber, greeting, getUserAnswer };
+export default (conditions, gameRules) => {
+  greeting();
+  console.log(gameRules);
+  let tries = 0;
+  while (tries < 3 && isCorrect) {
+    const [problem, solution] = conditions();
+    getUserAnswer(problem, solution, userName);
+    tries += 1;
+  }
+  if (tries === 3 && isCorrect) {
+    console.log(`Congratulations, ${userName}!`);
+  }
+};

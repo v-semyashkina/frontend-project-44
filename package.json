@@ -2,7 +2,7 @@
   "name": "@hexlet/code",
   "version": "1.0.0",
   "type": "module",
-  "description": "[![Actions Status](https://github.com/v-semyashkina/frontend-project-44/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/v-semyashkina/frontend-project-44/actions)",
+  "description": "A set of five console games based on popular mobile brain training apps",
   "bin": {
     "brain-games": "bin/brain-games.js",
     "brain-even": "bin/brain-even.js",
@@ -36,8 +36,6 @@
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-react": "^7.37.3",
-    "eslint-plugin-react-hooks": "^4.6.2",
     "globals": "^15.14.0"
   }
 }

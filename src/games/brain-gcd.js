@@ -1,7 +1,7 @@
-/* eslint-disable operator-linebreak */
-/* eslint-disable no-console */
-// eslint-disable-next-line import/extensions
-import { generateNumber, greeting, getUserAnswer } from '../index.js';
+import userInteraction from '../index.js';
+import generateNumber from '../generate-number.js';
+
+const rules = 'Find the greatest common divisor of given numbers.';
 
 const getDivisor = (dividend, checkDivisor) => {
   const newDivisor = dividend % checkDivisor;
@@ -11,27 +11,20 @@ const getDivisor = (dividend, checkDivisor) => {
   return getDivisor(checkDivisor, newDivisor);
 };
 
-const gameQuestions = (name) => {
-  let isCorrect = true;
-  let tries = 0;
-  while (tries < 3 && isCorrect) {
-    const numberOne = generateNumber(20) + 1;
-    const numberTwo = generateNumber(20) + 1;
-    const problem = `${numberOne} ${numberTwo}`;
-    const solution =
-      numberOne > numberTwo
-        ? getDivisor(numberOne, numberTwo).toString()
-        : getDivisor(numberTwo, numberOne).toString();
-    isCorrect = getUserAnswer(problem, solution, name);
-    tries += 1;
-  }
-  if (tries === 3 && isCorrect) {
-    console.log(`Congratulations, ${name}!`);
-  }
+const generateConditions = () => {
+  const result = [];
+  const numberOne = generateNumber(1, 20);
+  const numberTwo = generateNumber(1, 20);
+  const problem = `${numberOne} ${numberTwo}`;
+  result.push(problem);
+  const solution =
+    numberOne > numberTwo
+      ? getDivisor(numberOne, numberTwo).toString()
+      : getDivisor(numberTwo, numberOne).toString();
+  result.push(solution);
+  return result;
 };
 
 export default () => {
-  const userName = greeting();
-  console.log('Find the greatest common divisor of given numbers.');
-  gameQuestions(userName);
+  userInteraction(generateConditions, rules);
 };

@@ -1,24 +1,17 @@
-/* eslint-disable no-console */
-// eslint-disable-next-line import/extensions
-import { generateNumber, greeting, getUserAnswer } from '../index.js';
+import userInteraction from '../index.js';
+import generateNumber from '../generate-number.js';
 
-const gameQuestions = (name) => {
-  let isCorrect = true;
-  let tries = 0;
-  while (tries < 3 && isCorrect) {
-    const number = generateNumber(101);
-    const problem = number;
-    const solution = number % 2 === 0 ? 'yes' : 'no';
-    isCorrect = getUserAnswer(problem, solution, name);
-    tries += 1;
-  }
-  if (tries === 3 && isCorrect) {
-    console.log(`Congratulations, ${name}!`);
-  }
+const rules = 'Answer "yes" if the number is even, otherwise answer "no".';
+
+const generateConditions = () => {
+  const result = [];
+  const problem = generateNumber(1, 100);
+  result.push(problem);
+  const solution = problem % 2 === 0 ? 'yes' : 'no';
+  result.push(solution);
+  return result;
 };
 
 export default () => {
-  const userName = greeting();
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
-  gameQuestions(userName);
+  userInteraction(generateConditions, rules);
 };

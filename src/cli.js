@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { question } from 'readline-sync';
 
 // Wait for user's response.

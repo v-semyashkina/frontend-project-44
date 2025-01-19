@@ -14,6 +14,15 @@ const compat = new FlatCompat({
 });
 
 export default [
-  { languageOptions: { globals: globals.browser } },
+  {
+    languageOptions: { globals: globals.browser },
+  },
   ...compat.extends('airbnb'),
+  {
+    rules: {
+      'no-console': 0,
+      'import/extensions': 0,
+      'operator-linebreak': 0,
+    },
+  },
 ];
