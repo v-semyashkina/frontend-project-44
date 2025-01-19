@@ -19,12 +19,12 @@ const calculator = (a, b, sign) => {
 
 const generateConditions = () => {
   const result = [];
-  const numberOne = generateNumber(0, 10);
-  const numberTwo = generateNumber(0, 10);
+  const numOne = generateNumber(0, 10);
+  const numTwo = generateNumber(0, 10);
   const operator = operators[generateNumber(0, 2)];
-  const problem = `${numberOne} ${operator} ${numberTwo}`;
+  const problem = `${numOne} ${operator} ${numTwo}`;
   result.push(problem);
-  const solution = calculator(numberOne, numberTwo, operator).toString();
+  const solution = calculator(numOne, numTwo, operator).toString();
   result.push(solution);
   return result;
 };
