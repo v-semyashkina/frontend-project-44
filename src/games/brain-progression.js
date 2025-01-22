@@ -1,5 +1,5 @@
 import userInteraction from '../index.js';
-import generateNumber from '../generate-number.js';
+import generateNumber from '../helpers.js';
 
 const rules = 'What number is missing in the progression?';
 

@@ -1,19 +1,21 @@
 import userInteraction from '../index.js';
-import generateNumber from '../generate-number.js';
+import generateNumber from '../helpers.js';
 
 const rules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const checkPrime = (num) => {
-  const primes = [
-    2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71,
-    73, 79, 83, 89, 97,
-  ];
-  return primes.indexOf(num) !== -1;
+  if (num === 1) {
+    return false;
+  }
+  for (let i = 2; i <= Math.sqrt(num); i += 1) {
+    if (num % i === 0) return false;
+  }
+  return true;
 };
 
 const generateConditions = () => {
   const result = [];
-  const problem = generateNumber(1, 100);
+  const problem = generateNumber();
   result.push(problem);
   const isPrime = checkPrime(problem);
   const solution = isPrime ? 'yes' : 'no';

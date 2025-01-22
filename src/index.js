@@ -1,12 +1,10 @@
 import { question } from 'readline-sync';
 
-let userName;
-let isCorrect = true;
-
 const greeting = () => {
   console.log('Welcome to the Brain Games!');
-  userName = question('May I have your name? ');
+  const userName = question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
+  return userName;
 };
 
 const getUserAnswer = (problem, rightAnswer, name) => {
@@ -18,20 +16,24 @@ const getUserAnswer = (problem, rightAnswer, name) => {
     console.log(
       `'${userGuess}' is wrong answer ;(. Correct answer was '${rightAnswer}'. \nLet's try again, ${name}!`,
     );
-    isCorrect = false;
+    return false;
   }
+  return true;
 };
 
 export default (conditions, gameRules) => {
-  greeting();
+  const maxRounds = 3;
+  let isRight = true;
+  const userName = greeting();
   console.log(gameRules);
-  let tries = 0;
-  while (tries < 3 && isCorrect) {
+  for (let i = 0; i < maxRounds; i += 1) {
+    if (!isRight) {
+      break;
+    }
     const [problem, solution] = conditions();
-    getUserAnswer(problem, solution, userName);
-    tries += 1;
+    isRight = getUserAnswer(problem, solution, userName);
   }
-  if (tries === 3 && isCorrect) {
+  if (isRight) {
     console.log(`Congratulations, ${userName}!`);
   }
 };
