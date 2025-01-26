@@ -5,11 +5,9 @@ const rules = 'What number is missing in the progression?';
 
 const generateProgression = (start, step, length = 10) => {
   const progression = [start];
-  let count = 1;
-  while (count < length) {
+  for (let i = 1; i < length; i += 1) {
     const nextNum = progression[progression.length - 1] + step;
     progression.push(nextNum);
-    count += 1;
   }
   return progression;
 };
