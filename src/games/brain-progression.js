@@ -18,10 +18,10 @@ const generateConditions = () => {
   const progressionStart = generateNumber(1, 20);
   const progressionStep = generateNumber(1, 5);
   const progressionLength = generateNumber(5, 10);
-  const missingNum = generateNumber(0, progressionLength - 1);
+  const hiddenNum = generateNumber(0, progressionLength - 1);
   const progressionArr = generateProgression(progressionStart, progressionStep, progressionLength);
-  const solution = progressionArr[missingNum].toString();
-  progressionArr[missingNum] = '..';
+  const solution = progressionArr[hiddenNum].toString();
+  progressionArr[hiddenNum] = '..';
   const problem = progressionArr.join(' ');
   return [problem, solution];
 };
