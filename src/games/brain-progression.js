@@ -15,10 +15,10 @@ const generateProgression = (start, step, length = 10) => {
 };
 
 const generateConditions = () => {
-  const missingNum = generateNumber(0, 9);
   const progressionStart = generateNumber(1, 20);
   const progressionStep = generateNumber(1, 5);
   const progressionLength = generateNumber(5, 10);
+  const missingNum = generateNumber(0, progressionLength - 1);
   const progressionArr = generateProgression(progressionStart, progressionStep, progressionLength);
   const solution = progressionArr[missingNum].toString();
   progressionArr[missingNum] = '..';
