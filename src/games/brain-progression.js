@@ -1,14 +1,12 @@
-import userInteraction from '../index.js';
+import interactWithUser from '../index.js';
 import generateNumber from '../helpers.js';
 
 const rules = 'What number is missing in the progression?';
 
-const generateProgression = () => {
-  const firstNum = generateNumber(1, 20);
-  const step = generateNumber(1, 5);
-  const progression = [firstNum];
-  let count = 0;
-  while (count < 9) {
+const generateProgression = (start, step, length = 10) => {
+  const progression = [start];
+  let count = 1;
+  while (count < length) {
     const nextNum = progression[progression.length - 1] + step;
     progression.push(nextNum);
     count += 1;
@@ -17,17 +15,17 @@ const generateProgression = () => {
 };
 
 const generateConditions = () => {
-  const result = [];
   const missingNum = generateNumber(0, 9);
-  const progressionArr = generateProgression();
+  const progressionStart = generateNumber(1, 20);
+  const progressionStep = generateNumber(1, 5);
+  const progressionLength = generateNumber(5, 10);
+  const progressionArr = generateProgression(progressionStart, progressionStep, progressionLength);
   const solution = progressionArr[missingNum].toString();
-  result.push(solution);
   progressionArr[missingNum] = '..';
   const problem = progressionArr.join(' ');
-  result.unshift(problem);
-  return result;
+  return [problem, solution];
 };
 
 export default () => {
-  userInteraction(generateConditions, rules);
+  interactWithUser(generateConditions, rules);
 };

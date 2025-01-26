@@ -1,4 +1,4 @@
-import userInteraction from '../index.js';
+import interactWithUser from '../index.js';
 import generateNumber from '../helpers.js';
 
 const rules = 'Find the greatest common divisor of given numbers.';
@@ -19,17 +19,14 @@ const getDivisor = (numbers) => {
 };
 
 const generateConditions = () => {
-  const result = [];
   const numOne = generateNumber();
   const numTwo = generateNumber();
   const problem = `${numOne} ${numTwo}`;
-  result.push(problem);
   const sortedNumbers = sortNumbers(numOne, numTwo);
   const solution = getDivisor(sortedNumbers);
-  result.push(solution);
-  return result;
+  return [problem, solution];
 };
 
 export default () => {
-  userInteraction(generateConditions, rules);
+  interactWithUser(generateConditions, rules);
 };

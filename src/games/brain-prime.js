@@ -1,9 +1,9 @@
-import userInteraction from '../index.js';
+import interactWithUser from '../index.js';
 import generateNumber from '../helpers.js';
 
 const rules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const checkPrime = (num) => {
+const isPrime = (num) => {
   if (num === 1) {
     return false;
   }
@@ -14,15 +14,12 @@ const checkPrime = (num) => {
 };
 
 const generateConditions = () => {
-  const result = [];
   const problem = generateNumber();
-  result.push(problem);
-  const isPrime = checkPrime(problem);
-  const solution = isPrime ? 'yes' : 'no';
-  result.push(solution);
-  return result;
+  const prime = isPrime(problem);
+  const solution = prime ? 'yes' : 'no';
+  return [problem, solution];
 };
 
 export default () => {
-  userInteraction(generateConditions, rules);
+  interactWithUser(generateConditions, rules);
 };
