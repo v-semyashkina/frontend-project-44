@@ -7,13 +7,13 @@ const greetUser = () => {
   return userName;
 };
 
-export default (conditions, gameRules) => {
+export default (getConditions, gameRules) => {
   const maxRounds = 3;
   let userTries = 0;
   const userName = greetUser();
   console.log(gameRules);
   for (let i = userTries; i < maxRounds; i += 1) {
-    const [problem, solution] = conditions();
+    const [problem, solution] = getConditions();
     console.log(`Question: ${problem}`);
     const userGuess = question('Your answer: ');
     if (solution === userGuess) {
@@ -26,7 +26,7 @@ export default (conditions, gameRules) => {
       break;
     }
   }
-  if (userTries === 3) {
+  if (userTries === maxRounds) {
     console.log(`Congratulations, ${userName}!`);
   }
 };

@@ -8,14 +8,14 @@ const sortNumbers = (a, b) => {
   return result.sort();
 };
 
-const getDivisor = (numbers) => {
+const getGCD = (numbers) => {
   const [dividend, checkDivisor] = numbers;
   const newDivisor = dividend % checkDivisor;
   if (newDivisor === 0) {
     return checkDivisor.toString();
   }
   const newNumbers = [checkDivisor, newDivisor];
-  return getDivisor(newNumbers);
+  return getGCD(newNumbers);
 };
 
 const generateConditions = () => {
@@ -23,7 +23,7 @@ const generateConditions = () => {
   const numTwo = generateNumber();
   const problem = `${numOne} ${numTwo}`;
   const sortedNumbers = sortNumbers(numOne, numTwo);
-  const solution = getDivisor(sortedNumbers);
+  const solution = getGCD(sortedNumbers);
   return [problem, solution];
 };
 
